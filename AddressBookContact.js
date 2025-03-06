@@ -35,4 +35,7 @@ validateEmail(email){
   if(!emailRegex.test(email)) throw new Error("Email is invalid !!")
     return email
 }
+toString(){
+  return `Name: ${this.first_name} ${this.last_name}\n   Address: ${this.address} ${this.city} ${this.state} ${this.zipcode}\n   Phone: ${this.phone_number}\n   Email: ${this.email}`
+}
 }
