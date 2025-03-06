@@ -13,6 +13,17 @@ class AddressBook{
     this.contacts.forEach((contact, index) => console.log(`${index + 1}. ${contact.toString()}`));
 
   }
+  findAndEditContact(name, newContact){
+    let contact = this.contacts.find(c => c.first_name === name);
+    if (contact){
+      Object.assign(contact, newContact);
+      console.log(`Contact updated successfully: `+contact);
+
+    }else{
+      console.log(`Contact with name "${name} not found!`);
+    }
+
+  }
 }
 
 const addressBook = new AddressBook();
@@ -22,5 +33,7 @@ let contact2 = new AddressBookContact("Siddhu","Singh","456 Avenue","Bhopal","Ma
 
 addressBook.addContact(contact1)
 addressBook.addContact(contact2)
+addressBook.findAndEditContact("Siddhu",{phone_number: 1234556789,city:"Jabalpur"})
 
-addressBook.displayContact()
+addressBook.findAndEditContact("nitish",{phone_number:42224242244242,city:"Jharkhand"})
+// addressBook.displayConta,
