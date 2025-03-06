@@ -20,9 +20,18 @@ class AddressBook{
       console.log(`Contact updated successfully: `+contact);
 
     }else{
-      console.log(`Contact with name "${name} not found!`);
+      console.log(`Contact with name "${name}" not found!`);
     }
 
+  }
+  deleteContact(name){
+    let index = this.contacts.findIndex(c => c.first_name === name)
+    if(index !== -1){
+      this.contacts.splice(index,1)
+        console.log(`Contact "${name}" deleted successfully`)
+    }else{
+      console.log(`Contact with name "${name}" not found`)
+    }
   }
 }
 
@@ -35,5 +44,7 @@ addressBook.addContact(contact1)
 addressBook.addContact(contact2)
 addressBook.findAndEditContact("Siddhu",{phone_number: 1234556789,city:"Jabalpur"})
 
+addressBook.deleteContact("Siddhu")
 addressBook.findAndEditContact("nitish",{phone_number:42224242244242,city:"Jharkhand"})
+addressBook.deleteContact("diss")
 // addressBook.displayConta,
