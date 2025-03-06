@@ -72,6 +72,22 @@ class AddressBook{
     }, {});
     console.log("People grouped by State:", stateMap);
   }
+
+  countByCity() {
+    let cityCount = this.contacts.reduce((acc, contact) => {
+      acc[contact.city] = (acc[contact.city] || 0) + 1;
+      return acc;
+    }, {});
+    console.log("Contacts count by city:", cityCount);
+  }
+
+  countByState() {
+    let stateCount = this.contacts.reduce((acc, contact) => {
+      acc[contact.state] = (acc[contact.state] || 0) + 1;
+      return acc;
+    }, {});
+    console.log("Contacts count by state:", stateCount);
+  }
 }
 
 const addressBook = new AddressBook();
@@ -100,3 +116,6 @@ addressBook.searchByState("Madhya Pradesh");
 
 addressBook.viewPersonsByCity();
 addressBook.viewPersonsByState();
+
+addressBook.countByCity();
+addressBook.countByState();
