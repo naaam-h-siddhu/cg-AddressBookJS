@@ -53,6 +53,25 @@ class AddressBook{
       .map(contact => contact.first_name + " " + contact.last_name);
     console.log(`People in ${state}:`, peopleInState.length > 0 ? peopleInState.join(", ") : "No contacts found");
   }
+
+  viewPersonsByCity() {
+    let cityMap = this.contacts.reduce((acc, contact) => {
+      acc[contact.city] = acc[contact.city] || [];
+      acc[contact.city].push(contact.first_name + " " + contact.last_name);
+      return acc;
+    }, {});
+    console.log("People grouped by City:", cityMap);
+  }
+
+
+  viewPersonsByState() {
+    let stateMap = this.contacts.reduce((acc, contact) => {
+      acc[contact.state] = acc[contact.state] || [];
+      acc[contact.state].push(contact.first_name + " " + contact.last_name);
+      return acc;
+    }, {});
+    console.log("People grouped by State:", stateMap);
+  }
 }
 
 const addressBook = new AddressBook();
@@ -78,3 +97,6 @@ console.log(`Total Contacts: ${addressBook.getContactCount()}`);
 
 addressBook.searchByCity("Bhopal");
 addressBook.searchByState("Madhya Pradesh");
+
+addressBook.viewPersonsByCity();
+addressBook.viewPersonsByState();
