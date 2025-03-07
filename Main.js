@@ -76,6 +76,11 @@ class AddressBook{
     }, {});
     console.log("People grouped by State:", stateMap);
   }
+  sortContactsByStateZipCity(){
+    const sortedList = [...this.contacts].sort((a, b) => a.state.localeCompare(b.state) || a.zipcode - b.zipcode || a.city.localeCompare(b.city));
+    console.log("\n Contact sorted by city,zip of city");
+    sortedList.forEach(c => console.log(c.toString()));
+  }
 }
 
 const addressBook = new AddressBook();
@@ -105,3 +110,4 @@ addressBook.searchByState("Madhya Pradesh");
 addressBook.viewPersonsByCity();
 addressBook.viewPersonsByState();
 addressBook.sortContactsByName()
+addressBook.sortContactsByStateZipCity()
