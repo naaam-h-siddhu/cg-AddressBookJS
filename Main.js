@@ -63,7 +63,11 @@ class AddressBook{
     console.log("People grouped by City:", cityMap);
   }
 
-
+  sortContactsByName() {
+    const sortedList = [...this.contacts].sort((a, b) => a.first_name.localeCompare(b.first_name) || a.last_name.localeCompare(b.last_name));
+    console.log("\nContacts sorted alphabetically by name (using Stream-like approach):");
+    sortedList.forEach(contact => console.log(contact.toString()));
+  }
   viewPersonsByState() {
     let stateMap = this.contacts.reduce((acc, contact) => {
       acc[contact.state] = acc[contact.state] || [];
@@ -100,3 +104,4 @@ addressBook.searchByState("Madhya Pradesh");
 
 addressBook.viewPersonsByCity();
 addressBook.viewPersonsByState();
+addressBook.sortContactsByName()
